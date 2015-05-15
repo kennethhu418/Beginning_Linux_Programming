@@ -1,0 +1,2 @@
+Consumer.o: Consumer.cpp Consumer.h ../Items/WorkItem.h ../Queue/Queue.h \
+ ../Schedule/ScheduledObject.h

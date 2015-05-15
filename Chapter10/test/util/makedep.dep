@@ -1,0 +1,3 @@
+random_tree.o: random_tree.cpp util.h ../../include/tree.h
+tree_struct_determine.o: tree_struct_determine.cpp util.h \
+ ../../include/tree.h

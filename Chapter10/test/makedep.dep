@@ -1,0 +1,2 @@
+test_tree_serialize.o: test_tree_serialize.cpp util/util.h \
+ util/../../include/tree.h ../include/serialize.h ../include/tree.h

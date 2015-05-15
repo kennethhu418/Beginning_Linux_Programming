@@ -1,0 +1,5 @@
+ProducerConsumerSim.o: ProducerConsumerSim.cpp ../Consumer/Consumer.h \
+ ../Consumer/../Items/WorkItem.h ../Consumer/../Queue/Queue.h \
+ ../Consumer/../Schedule/ScheduledObject.h ../Producer/Producer.h \
+ ../Producer/../Items/WorkItem.h ../Producer/../Queue/Queue.h \
+ ../Producer/../Schedule/ScheduledObject.h ../Queue/Queue.h
