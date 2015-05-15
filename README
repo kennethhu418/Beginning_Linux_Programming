@@ -1,0 +1,7 @@
+This project simulates Producer-Consumer Problem:
+Suppose there are N cores on the system, then there will be N queues in the simulation, where on each core there will be one queue.
+
+On each core, we allocate P producer threads (specified by -p switch) and C consumer threads (specified by -c switch), and they push and pop items to the queue on this core.
+
+The threads on the first core will have real time schedule policy and the threads on other cores will have normal schedule policy.
+
