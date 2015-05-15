@@ -1,2 +1,0 @@
-Producer.o: Producer.cpp Producer.h ../Items/WorkItem.h ../Queue/Queue.h \
- ../Schedule/ScheduledObject.h
