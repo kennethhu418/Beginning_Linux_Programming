@@ -1,0 +1,11 @@
+ConsumerSim.o: ConsumerSim.cpp ../Consumer/Consumer.h \
+ ../Consumer/../Items/WorkItem.h \
+ ../Consumer/../Schedule/ScheduledObject.h SharedMem.h
+ProducerConsumerSim.o: ProducerConsumerSim.cpp SharedMem.h \
+ ../Producer/Producer.h ../Producer/../Items/WorkItem.h \
+ ../Producer/../Schedule/ScheduledObject.h ../Consumer/Consumer.h \
+ ../Consumer/../Items/WorkItem.h \
+ ../Consumer/../Schedule/ScheduledObject.h
+ProducerSim.o: ProducerSim.cpp ../Producer/Producer.h \
+ ../Producer/../Items/WorkItem.h \
+ ../Producer/../Schedule/ScheduledObject.h SharedMem.h
