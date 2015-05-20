@@ -1,0 +1,10 @@
+In this Chapter's practice, we still use the Producer/Consumer Model.
+Different with Chapter12, here each producer and a consumer is implemented as a process. On each core, there is only one consumer and one consumer.
+
+Please run the "RunSim.sh" under each implementation folder to run the simulation.
+
+Two implementations:
+1) Producer and Consumer share memory, where the queue on this core is stored.
+
+2) Producer and Consumer communicates through the message queue.
+   Producer sends the produced item to the message queue and the Consumer retrieves the item from the message queue.
