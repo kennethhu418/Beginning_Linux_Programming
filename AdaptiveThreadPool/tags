@@ -1,0 +1,59 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AdaptiveThreadPool	include/AdaptiveThreadPool.h	/^	AdaptiveThreadPool(const string &name, const ThreadPoolConfig &config) {$/;"	f	class:AdaptiveThreadPool
+AdaptiveThreadPool	include/AdaptiveThreadPool.h	/^class AdaptiveThreadPool$/;"	c
+JOBWORKER_TYPE_HELP_ADJACENT	include/WorkerConf.h	/^	JOBWORKER_TYPE_HELP_ADJACENT = 1, $/;"	e	enum:JobWorkerType
+JOBWORKER_TYPE_INDEPENDENT	include/WorkerConf.h	/^	JOBWORKER_TYPE_INDEPENDENT = 0, $/;"	e	enum:JobWorkerType
+JOBWORKER_TYPE_MAX	include/WorkerConf.h	/^	JOBWORKER_TYPE_MAX = 2$/;"	e	enum:JobWorkerType
+JOB_ASSIGN_LEAST_JOBS	include/WorkerConf.h	/^	JOB_ASSIGN_LEAST_JOBS =  4,$/;"	e	enum:JobAssignPolicy
+JOB_ASSIGN_MAX	include/WorkerConf.h	/^	JOB_ASSIGN_MAX = 5$/;"	e	enum:JobAssignPolicy
+JOB_ASSIGN_ROUND_ROBIN	include/WorkerConf.h	/^	JOB_ASSIGN_ROUND_ROBIN = 3,$/;"	e	enum:JobAssignPolicy
+JOB_ASSIGN_SAME_CORE_LEAST_JOBS	include/WorkerConf.h	/^	JOB_ASSIGN_SAME_CORE_LEAST_JOBS = 2,$/;"	e	enum:JobAssignPolicy
+JOB_ASSIGN_SAME_CORE_ROUND_ROBIN	include/WorkerConf.h	/^	JOB_ASSIGN_SAME_CORE_ROUND_ROBIN = 1,$/;"	e	enum:JobAssignPolicy
+JobAssignPolicy	include/WorkerConf.h	/^enum JobAssignPolicy$/;"	g
+JobWorkerType	include/WorkerConf.h	/^enum JobWorkerType$/;"	g
+MAX_WORKER_COUNT	include/WorkerConf.h	8;"	d
+THREADSCHED_DEFAULT	include/WorkerConf.h	/^	THREADSCHED_DEFAULT = SCHED_OTHER,$/;"	e	enum:ThreadSchedulePolicy
+THREADSCHED_REALTIME_NO_SLICE	include/WorkerConf.h	/^	THREADSCHED_REALTIME_NO_SLICE = SCHED_FIFO$/;"	e	enum:ThreadSchedulePolicy
+THREADSCHED_REALTIME_WITH_SLICE	include/WorkerConf.h	/^	THREADSCHED_REALTIME_WITH_SLICE = SCHED_RR,$/;"	e	enum:ThreadSchedulePolicy
+ThreadPoolConfig	include/WorkerConf.h	/^	ThreadPoolConfig(unsigned int workersPerCore = 1, $/;"	f	class:ThreadPoolConfig
+ThreadPoolConfig	include/WorkerConf.h	/^class ThreadPoolConfig$/;"	c
+ThreadSchedulePolicy	include/WorkerConf.h	/^enum ThreadSchedulePolicy$/;"	g
+UPDATING_POOL_STATISTICS_TIME_DEFAULT	include/WorkerConf.h	9;"	d
+__ADAPTIVE_THREADPOOL_H__	include/AdaptiveThreadPool.h	2;"	d
+__WORKER_CONFIG_H__	include/WorkerConf.h	2;"	d
+configAndStartWorkers	src/AdaptiveThreadPool/AdaptiveThreadPool.cpp	/^void	AdaptiveThreadPool::configAndStartWorkers() {$/;"	f	class:AdaptiveThreadPool
+getCoreCount	include/WorkerConf.h	/^	static unsigned int getCoreCount() {$/;"	f	class:ThreadPoolConfig
+getJobCount	include/AdaptiveThreadPool.h	/^	unsigned long long getJobCount() {$/;"	f	class:AdaptiveThreadPool
+getPoolConfig	include/AdaptiveThreadPool.h	/^	ThreadPoolConfig getPoolConfig() {$/;"	f	class:AdaptiveThreadPool
+getPoolName	include/AdaptiveThreadPool.h	/^	string	getPoolName() {$/;"	f	class:AdaptiveThreadPool
+getSchedulePolicy	include/WorkerConf.h	/^	ThreadSchedulePolicy getSchedulePolicy() const {$/;"	f	class:ThreadPoolConfig
+getThreadPriority	include/WorkerConf.h	/^	unsigned int getThreadPriority() const {$/;"	f	class:ThreadPoolConfig
+getWorkerType	include/WorkerConf.h	/^	JobWorkerType getWorkerType() {$/;"	f	class:ThreadPoolConfig
+getWorkersPerCore	include/WorkerConf.h	/^	unsigned int getWorkersPerCore() const {$/;"	f	class:ThreadPoolConfig
+mConfig	include/AdaptiveThreadPool.h	/^	ThreadPoolConfig mConfig;$/;"	m	class:AdaptiveThreadPool
+mJobWorkerArr	include/AdaptiveThreadPool.h	/^	JobWorker*	mJobWorkerArr[MAX_WORKER_COUNT];$/;"	m	class:AdaptiveThreadPool
+mJobWorkerCount	include/AdaptiveThreadPool.h	/^	unsigned int  mJobWorkerCount;$/;"	m	class:AdaptiveThreadPool
+mJobWorkerType	include/WorkerConf.h	/^	JobWorkerType	mJobWorkerType;$/;"	m	class:ThreadPoolConfig
+mJobWorkerWithLeastJob	include/AdaptiveThreadPool.h	/^	unsigned int	mJobWorkerWithLeastJob;$/;"	m	class:AdaptiveThreadPool
+mJobWorkerWithLeastJobOnEachCoreArr	include/AdaptiveThreadPool.h	/^	unsigned int	mJobWorkerWithLeastJobOnEachCoreArr[MAX_WORKER_COUNT];$/;"	m	class:AdaptiveThreadPool
+mLock	include/AdaptiveThreadPool.h	/^	sem_t	mLock;$/;"	m	class:AdaptiveThreadPool
+mName	include/AdaptiveThreadPool.h	/^	string		mName;$/;"	m	class:AdaptiveThreadPool
+mNextGlobalJobWorker	include/AdaptiveThreadPool.h	/^	unsigned int	mNextGlobalJobWorker;$/;"	m	class:AdaptiveThreadPool
+mNextJobWorkerOnEachCoreArr	include/AdaptiveThreadPool.h	/^	unsigned int	mNextJobWorkerOnEachCoreArr[MAX_WORKER_COUNT];$/;"	m	class:AdaptiveThreadPool
+mThreadPolicy	include/WorkerConf.h	/^	ThreadSchedulePolicy	mThreadPolicy;$/;"	m	class:ThreadPoolConfig
+mThreadPriority	include/WorkerConf.h	/^	unsigned int	mThreadPriority;$/;"	m	class:ThreadPoolConfig
+mTimerThread	include/AdaptiveThreadPool.h	/^	pthread_t		mTimerThread;$/;"	m	class:AdaptiveThreadPool
+mUpdatingStatisticsTime	include/WorkerConf.h	/^	time_spec		mUpdatingStatisticsTime;$/;"	m	class:ThreadPoolConfig
+mWorkerProcessedCountArr	include/AdaptiveThreadPool.h	/^	unsigned long long	mWorkerProcessedCountArr[MAX_WORKER_COUNT];$/;"	m	class:AdaptiveThreadPool
+mWorkersPerCore	include/WorkerConf.h	/^	unsigned int	mWorkersPerCore;$/;"	m	class:ThreadPoolConfig
+setSchedulePolicy	include/WorkerConf.h	/^	void setSchedulePolicy(ThreadSchedulePolicy policy) {$/;"	f	class:ThreadPoolConfig
+setStatisticsUpdatingTimeInMs	include/WorkerConf.h	/^	void setStatisticsUpdatingTimeInMs(unsigned int time) {$/;"	f	class:ThreadPoolConfig
+setThreadPriority	include/WorkerConf.h	/^	void setThreadPriority(unsigned int priority) {$/;"	f	class:ThreadPoolConfig
+setWorkerType	include/WorkerConf.h	/^	void setWorkerType(JobWorkerType type) {$/;"	f	class:ThreadPoolConfig
+setWorkersPerCore	include/WorkerConf.h	/^	void setWorkersPerCore(unsigned int workersPerCore) {$/;"	f	class:ThreadPoolConfig
+~AdaptiveThreadPool	include/AdaptiveThreadPool.h	/^	~AdaptiveThreadPool() {$/;"	f	class:AdaptiveThreadPool

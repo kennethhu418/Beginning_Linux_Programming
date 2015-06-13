@@ -1,0 +1,28 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CHECKSUM_PATTERN	Common/WorkItem.h	9;"	d
+Client	Client/Client.h	/^	Client(unsigned int id, const char* server_name = NULL, int port = 6323) {$/;"	f	class:Client
+Client	Client/Client.h	/^class Client$/;"	c
+DATA_LEN	Common/WorkItem.h	7;"	d
+DATA_SEG_COUNT	Common/WorkItem.h	8;"	d
+WorkItem	Common/WorkItem.h	/^	WorkItem(const char* name, const char* data = NULL, int dataLen = 0)$/;"	f	class:WorkItem
+WorkItem	Common/WorkItem.h	/^class WorkItem$/;"	c
+__CLIENT_H__	Client/Client.h	2;"	d
+__WORKITEM_H__	Common/WorkItem.h	2;"	d
+connect	Client/Client.h	/^	bool connect() {$/;"	f	class:Client
+disconnect	Client/Client.h	/^	bool disconnect() {$/;"	f	class:Client
+generateChecksum	Common/WorkItem.h	/^	unsigned short generateChecksum() {$/;"	f	class:WorkItem
+generateZeroData	Common/WorkItem.h	/^	void generateZeroData() {$/;"	f	class:WorkItem
+m_checksum	Common/WorkItem.h	/^	unsigned short	m_checksum;$/;"	m	class:WorkItem
+m_data	Common/WorkItem.h	/^	char	m_data[DATA_LEN];$/;"	m	class:WorkItem
+m_id	Client/Client.h	/^	unsigned int m_id;$/;"	m	class:Client
+m_name	Common/WorkItem.h	/^	char	m_name[30];$/;"	m	class:WorkItem
+m_run	Client/Client.h	/^	bool	m_run;$/;"	m	class:Client
+m_server_name	Client/Client.h	/^	char	m_server_name[256];$/;"	m	class:Client
+m_server_port	Client/Client.h	/^	int		m_server_port;$/;"	m	class:Client
+validate	Common/WorkItem.h	/^	bool validate() {$/;"	f	class:WorkItem
+work	Client/Client.h	/^	void work(unsigned int seconds_to_run) {$/;"	f	class:Client
