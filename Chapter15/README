@@ -6,4 +6,5 @@ Each client generate random data and calculates the checksum for the data.
 The generated data and the checksum would be transmitted to server together.
 The server checks the consistency between the data and checksum.
 
+/*Optional*/
 We use libevent as our socket event model, the underlying method is epoll.

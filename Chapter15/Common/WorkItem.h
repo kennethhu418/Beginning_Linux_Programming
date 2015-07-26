@@ -42,13 +42,17 @@ public:
 		memset(m_data, 0, sizeof(m_data));
 		if(data)
 			memcpy(this->m_data, data, dataLen);
-		m_checksum = generateChecksum();
+		this->m_checksum = generateChecksum();
 	}
 
 	bool validate() {
 		unsigned short targetChecksum = generateChecksum();
 		return targetChecksum == this->m_checksum;
 	}
+
+    const char* getName() {
+        return m_name;
+    }
 };
 
 #endif

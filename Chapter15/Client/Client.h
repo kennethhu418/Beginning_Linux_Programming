@@ -5,9 +5,6 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <fcntl.h>
-#include <event2/event.h>
-#include <event2/buffer.h>
-#include <event2/bufferevent.h>
 #include <netdb.h>
 #include <errno.h>
 #include <iostream>
@@ -32,7 +29,7 @@ private:
 		m_workitem_data_len = 1 + rand() % DATA_LEN;
 		for(int i = 0; i < m_workitem_data_len; ++i)
 			m_workitem_data[i] = rand() % 26 + base;
-		sprintf(m_workitem_name, "WorkItem_From_Client%d_%d", 
+		sprintf(m_workitem_name, "WorkItem_From_Client_%d_%d", 
 				m_id, m_cooked_count++);
 	}
 
@@ -76,7 +73,7 @@ public:
 	void work(unsigned int seconds_to_run) {
 		srand(time(NULL));
 		time_t	target_time = seconds_to_run + time(NULL);
-		while(true) {
+		while(work) {
 			time_t cur_time = time(NULL);
 			if(cur_time > target_time)
 				break;

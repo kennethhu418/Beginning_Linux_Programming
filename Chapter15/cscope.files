@@ -1,2 +1,5 @@
-./Client/Client.h
+./Server/Server.cpp
+./Server/Server.h
 ./Common/WorkItem.h
+./Client/Client.cpp
+./Client/Client.h
