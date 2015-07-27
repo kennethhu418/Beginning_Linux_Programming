@@ -1,15 +1,18 @@
 #ifndef __SERVER_H__
 #define __SERVER_H__
 
-#include <../Common/WorkItem.h>
+#include "WorkItem.h"
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <sys/epoll.h>
 #include <fcntl.h>
+#include <cstring>
 #include <netdb.h>
 #include <errno.h>
 #include <iostream>
 #include <ctime>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #define MAX_EVENTS_RECEIVED 512
 
@@ -20,26 +23,11 @@ private:
 	unsigned int m_port;
 	int		m_socket;
 
-    void make_socket_nonblock() {
-        int     flags = fcntl(m_socket, F_GETFL, 0);
+    void make_socket_nonblock(int socket) {
+        int     flags = fcntl(socket, F_GETFL, 0);
         flags |= O_NONBLOCK;
-        fcntl(m_socket, F_SETFL, flags);
+        fcntl(socket, F_SETFL, flags);
     }
-
-	static void do_accept(evutil_socket_t listener, short event, void* arg) {
-		Server* svr = (Server*)arg;
-		event_base *base = svr->m_base;
-		int fd = accept(listener, NULL, 0);
-		if(fd < 0)
-			std::cerr << "Accept Errror: " << strerror(errno) >> std::endl;
-		else if (fd > FD_SETSIZE)
-			close(fd);
-		else {
-			evutil_make_socket_nonblocking(fd);
-			bufferevent *bev = bufferevent_socket_new(base, fd, );
-		}
-
-	}
 
 public:
 	Server(unsigned int id, unsigned int port = 6323) : m_id(id), m_port(port) {
@@ -50,22 +38,25 @@ public:
 		sockaddr_in sin;
 		sin.sin_family = AF_INET;
 		sin.sin_addr.s_addr =  0;
-		sin.sin_port = hton(m_port);
+		sin.sin_port = htons(m_port);
 
 		m_socket = socket(AF_INET, SOCK_STREAM, 0);
-        make_socket_nonblock();
+        make_socket_nonblock(m_socket);
 
         hostent* info = gethostbyname("localhost");
-        sin.sin_addr.s_addr = *(*in_addr)*(info->h_addr_list);
+        sin.sin_addr.s_addr = *(in_addr_t*)*(info->h_addr_list);
 
 		if(bind(m_socket, (sockaddr*)&sin, sizeof(sin)) < 0) {
-			std::cerr << "Bind Errror: " << strerror(errno) >> std::endl;
+			std::cerr << "Bind Errror: " << strerror(errno) << std::endl;
 			close(m_socket);
 			return false;
 		}
+		else {
+			std::cout << "Bound Server to " << inet_ntoa(sin.sin_addr) << ":" << ntohs(sin.sin_port) << std::endl;
+		}
 
 		if(listen(m_socket, 32) < 0) {
-			std::cerr << "Listen Q Creation Errror: " << strerror(errno) >> std::endl;
+			std::cerr << "Listen Q Creation Errror: " << strerror(errno) << std::endl;
 			close(m_socket);
 			return false;
 		}
@@ -82,23 +73,24 @@ public:
         while(true) {
             int cnt = epoll_wait(ev, event_result, MAX_EVENTS_RECEIVED, -1);
             for(int i = 0; i < cnt; ++i) {
-                if(event_result[i].fd == m_socket) {
+                if(event_result[i].data.fd == m_socket) {
                     // there is new connection, need to accept
-                    int new_fd = accept(m_socket, (sockaddr*)&sin, sizeof(sin));
+                    int new_fd = accept(m_socket, NULL, NULL);
                     make_socket_nonblock(new_fd);
                     event.events = EPOLLIN;
                     event.data.fd = new_fd;
                     epoll_ctl(ev, EPOLL_CTL_ADD, new_fd, &event);
 
-                    std::cout << "Establish connection with client: " << 
+                    std::cout << "Establish connection with a new client " << std::endl;
                 }
                 else if(event_result[i].events & EPOLLIN) {
-                    int n = read(event_result[i].data.fd, &item, sizeof(item));
-                    if(n = 0) {
+                    int n = recv(event_result[i].data.fd, &witem, sizeof(witem), MSG_WAITALL);
+                    if(n == 0) {
                         close(event_result[i].data.fd);
                     }
-                    else if(n != sizeof(item)) {
-                        std::cerr << "Error receiving non-itegrated data." << std::endl;
+                    else if(n != sizeof(witem)) {
+                        std::cerr << "Error receiving non-itegrated data. Encountered Signal Interrupt?" << std::endl;
+						std::cerr << "Received " << n << " bytes but we need " << sizeof(witem) << " bytes." << std::endl;
                         close(event_result[i].data.fd);
                     }
                     else {
@@ -106,6 +98,10 @@ public:
                             std::cerr << "Error: Received Data is corrupted." <<std::endl;
                             std::cerr << "    WorkItem: " << witem.getName() << std::endl;
                         } 
+						else {
+							// std::cout << "Successfully verify data." << std::endl;
+							std::cout << "> Received valid data " << witem.getName() << std::endl;
+						}
                     }
                 }
             }

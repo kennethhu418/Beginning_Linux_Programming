@@ -34,12 +34,12 @@ int main(int argc, const char** argv) {
     client_id = atoi(argv[1]);
 
     Client client(client_id, server, port);
-    if(!client.connect()) {
+    if(!client.Connect()) {
         std::cerr << "Client fails to connect to server." << std::endl;
         return 2;
     }
 
-    client.work(seconds);
-    client.disconnect();
+    client.Work(seconds);
+    client.Disconnect();
     return 0;
 }
